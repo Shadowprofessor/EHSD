@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EHSD Research Centre - Projects</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('Niit.jpg');
+            color: #fff;
+            scroll-behavior: smooth;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            padding: 10px 0px;
+            text-align: left;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: darkred;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .navbar ul li {
+            margin: 0 15px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #f9f3f3;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .logo-nav {
+            width: 75px;
+        }
+
+        /* Main Content Styling */
+        .main {
+            margin-top: 100px;
+            padding: 20px;
+        }
+        /* Our Projects Section */
+        .our-projects {
+            display: flex; /* Flexbox layout for horizontal alignment */
+            align-items: center; /* Center align the items vertically */
+            justify-content: space-between; /* Space between the text and image */
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            gap: 20px; /* Add spacing between text and image */
+        }
+
+        .our-projects .content {
+            flex: 1; /* Allow the text to take up one portion of the space */
+        }
+
+        .our-projects .image-container {
+            flex: 1; /* Allow the image to take up an equal portion */
+            display: flex; /* Center align the image within its container */
+            justify-content: center;
+        }
+
+        .our-projects img {
+            max-width: 90%; /* Ensure the image scales properly */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Project Divisions */
+        .project-divisions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; /* Increased gap for better spacing */
+            margin-top: 20px;
+        }
+
+        .project-card {
+            background-color: #222;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            cursor: pointer;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            height: 100%;
+            min-height: 200px; /* Ensures equal height */
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover; /* Ensures images retain their aspect ratio */
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        .project-card-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            text-align: center;
+            max-height: 100%;
+            overflow-y: auto;
+        }
+
+        .project-card:hover .project-card-content {
+            opacity: 1;
+        }
+
+        .project-card-content h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .project-card-content p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .project-card-content .team-members {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .project-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .project-table th, .project-table td {
+            border: 1px solid #030202;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .project-table th {
+            background-color: #020202;
+            font-weight: bold;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+        
+    /* Enhanced Image Slider */
+    .slider {
+            position: relative;
+            width: 90%;
+            max-width: 1000px;
+            margin: 60px auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .slider-images {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            height: 600px; /* Fixed height for consistency */
+        }
+
+        .slider-images img {
+            width: 150%;
+            height: 90%;
+            object-fit: scale-down; /* Ensure images fill container */
+            border-radius: 15px;
+            flex-shrink: 0;
+        }
+
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            padding: 20px 25px;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 50%;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(3px);
+        }
+
+        .slider-button:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev {
+            left: 30px;
+        }
+
+        .next {
+            right: 30px;
+        }
+
+        /* Indicator Dots */
+        .slider-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .indicator {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background-color: #fff;
+            transform: scale(1.3);
+        }
+
+     
+     .footer-distributed {
+        background-color: #1f1f1f;
+        color: #f1f1f1;
+        padding: 40px 30px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+        border-top: 1px solid #ff9800;
+        font-size: 1rem;
+        position: absolute;
+        animation: slideIn 1s ease-out;
+    }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .footer-left img {
+        width: 60px;
+        margin-bottom: 10px;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .footer-left img:hover {
+        transform: scale(1.2);
+    }
+
+    .footer-links {
+        margin: 20px 0;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .footer-links a {
+        color: #f1f1f1;
+        margin-right: 20px;
+        text-decoration: none;
+        transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
+    }
+
+    .footer-links a:hover {
+        color: #ff9800;
+        border-bottom: 2px solid #ff9800;
+    }
+
+    .footer-center div {
+        margin: 15px 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .footer-center i {
+        margin-right: 12px;
+        color: #ff9800;
+        font-size: 22px;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .footer-center i:hover {
+        transform: scale(1.3);
+    }
+
+    .footer-right .footer-company-about {
+        margin-bottom: 15px;
+        line-height: 1.8;
+        text-align: justify;
+    }
+
+    .footer-icons a {
+        color: #f1f1f1;
+        margin-right: 15px;
+        font-size: 28px;
+        display: inline-block;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .footer-icons a:hover {
+        color: #ff9800;
+        transform: rotate(10deg) scale(1.3);
+        box-shadow: 0 0 15px rgba(255, 152, 0, 0.7);
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+        .footer-distributed {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .footer-left,
+        .footer-center,
+        .footer-right {
+            margin: 20px 0;
+        }
+
+        .footer-links {
+            margin-bottom: 30px;
+        }
+
+        .footer-icons a {
+            margin: 10px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo-nav">
+            <img src="NUlogo.png" alt="logo" class="logo-nav" />
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Our Team.html">Our Team</a></li>
+            <li><a href="Project.html">Projects</a></li>
+            <li><a href="news.html">News and Event</a></li>
+            <li><a href="publications.html">Publications</a></li>
+        </ul>
+    </nav>
+    <!-- Main Content -->
+    <section class="main">
+<!-- Our Projects Section -->
+<div class="our-projects">
+    <div class="content">
+        <h2>Our Projects</h2>
+        <p>
+            This section provides a comprehensive overview of the various projects we engage in. It offers a glimpse into our ongoing initiatives,
+            demonstrating our commitment to continuous exploration and innovation. Explore the projects below to gain insight into the diverse aspects of our work.
+        </p>
+    </div>
+    <div class="image-container">
+        <img src="ourprojects'.png" alt="Overview of Our Projects">
+    </div>
+</div>
+
+        <!-- Project Divisions -->
+        <div class="project-divisions">
+           <!-- Research Projects -->
+           <div class="project-card">
+            <h3>Research Projects</h3>
+                <img src="research.png" alt="Research Projects">
+                <div class="project-card-content">
+                    <h3>Research Projects</h3>
+                    <p>Projects that involve in-depth investigations, rigorous inquiry and analysis as well as studies aimed at uncovering new insights, advancing knowledge, and addressing key challenges within our field.</p>
+                    <table class="project-table">
+                        <thead>
+                            <tr>
+                                <th>Project Titles</th>
+                                <th>Team Members</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Integration of Photovoltaic and Photosynthesis techniques for harvesting optimized electrical energy</td>
+                                <td>Dr. Ajay Singh</td>
+                            </tr>
+                            <tr>
+                                <td>Hybrid Renewable Energy System (HRES)</td>
+                                <td>Dr. Ajay Singh, Dr. Jetender Joshi</td>
+                            </tr>
+                            <tr>
+                                <td>Herbal Battery</td>
+                                <td>Dr. Ajay Singh, Dr. Jetender Joshi, Mr. Praveen Kumar, Mr. Sumeet Gangwar</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- R&D Projects -->
+            <div class="project-card">
+                <h3>R&D Projects</h3>
+                <img src="rnd.png" alt="R&D Projects">
+                <div class="project-card-content">
+                    <h3>R&D Projects</h3>
+                    <p>Projects that exemplify the application of extensive research and development efforts. They underscore our commitment to exploring new frontiers and generating innovative solutions within our field.</p>
+                    <table class="project-table">
+                        <thead>
+                            <tr>
+                                <th>Project Titles</th>
+                                <th>Team Members</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Electrical Energy from Plants as Green Renewable Energy for Rural Development</td>
+                                <td>Dr. Ajay Singh, Dr. Jetender Joshi</td>
+                            </tr>
+                            <tr>
+                                <td>Building Renewable Energy Management</td>
+                                <td>Dr. Ajay Singh</td>
+                            </tr>
+                            <tr>
+                                <td>Singer & Song Recognition</td>
+                                <td>Dr. Jetender Joshi, Mr. Swaroop Nambiar</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Capstone Projects -->
+            <div class="project-card">
+                <h3>Capstone Projects</h3>
+                <img src="capstone.png" alt="Capstone Projects">
+                <div class="project-card-content">
+                    <h3>Capstone Projects</h3>
+                    <p>Capstone projects represent the students' consolidation of their academic journey. These practical demonstrations reveal their ability to apply acquired knowledge to address real-world issues, reflecting their preparedness for the professional sphere.</p>
+                    <table class="project-table">
+                        <thead>
+                            <tr>
+                                <th>Project Titles</th>
+                                <th>Team Members</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Human Energy Harvesting System (HRES)</td>
+                                <td>Dr. Ajay Singh, Dr. Jetender Joshi, Mr. Sachin Bandi, Mr. Anshul Yadav</td>
+                            </tr>
+                            <tr>
+                                <td>Color Based Sorting System</td>
+                                <td>Dr. Jetender Joshi, Mr. Swaroop Nambiar</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slider">
+        <div class="slider-images">
+            <img src="capstone.png" alt="Slider Image 1">
+            <img src="energy.png" alt="Slider Image 2">
+            <img src="iot.png" alt="Slider Image 3">
+
+        </div>
+        <button class="slider-button prev" aria-label="Previous slide">&#10094;</button>
+        <button class="slider-button next" aria-label="Next slide">&#10095;</button>
+        <div class="slider-indicators"></div>
+    </section>
+    
+    <footer class="footer-distributed">
+        <div class="footer-left">
+            <img src="NUlogo.png" alt="NU EHSD Logo" />
+            <p class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="Our Team.html">Our Team</a>
+                <a href="Project.html">Projects</a>
+                <a href="news.html">News and Event</a>
+                <a href="publications.html">Publications</a>
+            </p>
+            
+            <p>
+                &copy; 2024 EHSD Research Centre. All rights reserved.</p>
+        </div>
+    
+        <div class="footer-center">
+            <div>
+                <a href="https://maps.app.goo.gl/XDHGesiEC6ZJJCjD9"><i class="fa fa-map-marker"></a></i>
+                <p>
+                    <span>NIIT University</span>
+                    Neemrana, Rajasthan
+                </p>
+            </div>
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p>
+                    <a href="mailto:info@ehsd-research.org">info@ehsd-research.org</a>
+                </p>
+            </div>
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>+91-123-456-7890</p>
+            </div>
+        </div>
+    
+        <div class="footer-right">
+            <p class="footer-company-about">
+                EHSD Research Centre is dedicated to innovation in energy harvesting and sustainable development, addressing global challenges through cutting-edge research and development.
+            </p>
+            <div class="footer-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+    // Slider Configuration
+    let currentSlide = 0;
+    let autoSlideInterval;
+    const slides = document.querySelector('.slider-images');
+    const images = document.querySelectorAll('.slider-images img');
+    const indicatorsContainer = document.querySelector('.slider-indicators');
+
+    // Create indicators
+    images.forEach((_, index) => {
+        const indicator = document.createElement('div');
+        indicator.classList.add('indicator');
+        if(index === 0) indicator.classList.add('active');
+        indicator.addEventListener('click', () => goToSlide(index));
+        indicatorsContainer.appendChild(indicator);
+    });
+
+    // Auto-slide function
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(() => {
+            moveSlide(1);
+        }, 10000); // Change slide every 10 seconds
+    }
+
+    function moveSlide(direction) {
+        currentSlide = (currentSlide + direction + images.length) % images.length;
+        updateSlide();
+        resetAutoSlide();
+    }
+
+    function goToSlide(index) {
+        currentSlide = index;
+        updateSlide();
+        resetAutoSlide();
+    }
+
+    function updateSlide() {
+        slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+        document.querySelectorAll('.indicator').forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === currentSlide);
+        });
+    }
+
+    function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+        startAutoSlide();
+    }
+
+    // Event listeners
+    document.querySelector('.prev').addEventListener('click', () => moveSlide(-1));
+    document.querySelector('.next').addEventListener('click', () => moveSlide(1));
+    
+    // Pause on hover
+    document.querySelector('.slider').addEventListener('mouseenter', () => {
+        clearInterval(autoSlideInterval);
+    });
+    
+    document.querySelector('.slider').addEventListener('mouseleave', startAutoSlide);
+
+    // Initialize
+    startAutoSlide();
+
+    // Responsive height
+    function updateSliderHeight() {
+        const activeImage = images[currentSlide];
+        const slider = document.querySelector('.slider');
+        slider.style.height = `${activeImage.clientHeight}px`;
+    }
+
+    window.addEventListener('resize', updateSliderHeight);
+    updateSliderHeight();
+    </script>
+</body>
+</html>

@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>OUR TEAM|EHSD</title>
+        <style>
+            /* General Reset */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+    
+            body {
+                font-family: 'Poppins', sans-serif;
+                color: #040101;
+                overflow-x: hidden;
+                scroll-behavior: smooth;
+                background-color: #040101;
+            }   
+    
+            /* Navbar */
+            .navbar {
+                background: transparent;
+
+                background-color: darkred;
+                padding: 20px 40px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: flex;
+                width: 100%;
+                top: 0;
+                z-index: 100;
+                transition: background 0.4s ease, box-shadow 0.4s ease;
+
+            }
+    
+            .navbar.scroll-active {
+                background: #decccce6;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            }
+    
+            .navbar ul {
+                display: flex;
+                list-style: none;
+            }
+    
+            .navbar ul li {
+                margin: 0 15px;
+            }
+    
+            .navbar ul li a {
+                text-decoration: none;
+                color: #f9f3f3;
+                font-weight: 500;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                transition: color 0.3s ease, transform 0.3s ease;
+            }
+    
+            .navbar ul li a:hover {
+                color: #f1f8f2;
+                transform: scale(1.1);
+            }
+    
+            [data-scroll] {
+            transform: translateZ(0px) scale(1.1);
+            transition: transform 0.8s ease, opacity 0.8s ease;
+            will-change: transform, opacity;
+        }
+    
+            [data-scroll]:hover {
+            transform: translateZ(10px) scale(1.2);
+        }
+            /* Container for both text box and image */
+            .content-container {
+                display: flex;
+                justify-content:center;
+                align-items: center;
+                gap: 20px; /* Space between the text box and the image */
+                max-width: 1200px;
+                margin-left: 100px; /* Remove default margin for tighter styling */
+            }
+
+            /* Transparent box for the text */
+            .transparent-box {background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+                
+                color: #fff; /* White text color for contrast */
+                padding: 20px;
+                border-radius: 10px; /* Rounded corners */
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Soft shadow */
+                max-width: 600px; /* Limit width of the text box */
+                line-height: 1.8;
+                font-size: 1.2rem;
+                backdrop-filter: blur(10px); /* Apply a blur effect on the background */
+                
+            }
+
+            /* Transparent box for our mission */
+            .mission-box {
+                background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+                color: #fff; /* White text color for contrast */
+                padding: 50px; /* Increased padding for a larger box */
+                border-radius: 10px; /* Rounded corners */
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Soft shadow */
+                min-width: 95%; /* Limit maximum width to 80% of the viewport */
+                margin: 0 auto; /* Center the box horizontally */
+                line-height: 1.8;
+                font-size: 1.4rem; /* Larger font size */
+                backdrop-filter: blur(10px); /* Apply a blur effect on the background */
+                text-align: justify; /* Center-align the content */
+            }
+
+            .group-heading {
+                font-family: 'Arial', sans-serif; /* Set a clean, modern font */
+                font-size: 2rem; /* Increase font size for emphasis */
+                font-weight: bold; /* Make the text bold */
+                text-transform: uppercase; /* Convert text to uppercase */
+                color: darkred; /* Bright, contrasting color */
+                text-align: left; /* Center-align the heading */
+                letter-spacing: 2px; /* Add space between letters for style */
+                margin-left: 100px; /* Remove default margin for tighter styling */
+                text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* Add a subtle shadow for depth */
+            }
+            
+            /* Image and Content Container */
+            .image-content-wrapper {
+                display: flex;
+                gap: 20px;
+                align-items: flex-start; /* Align content at the top */
+                margin: 20px 0;
+            }
+
+            /* Image Container */
+            .image-container img {
+                width: 400px; /* Set the width of the image */
+                height: auto; /* Maintain aspect ratio */
+                border-radius: 8px; /* Rounded corners for the image */
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Soft shadow around the image */
+                object-fit: cover; /* Ensure image covers the box without distortion */
+            }
+
+
+            /* The hidden additional information */
+            .more-info {
+                display: none;
+                margin-top: 20px;
+            }
+
+            /* More button styling */
+            .more-btn {
+                background: #ff2b06; /* Button color */
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                font-size: 1rem;
+                border-radius: 25px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            .more-btn:hover {
+                background: #ff7300; /* Hover color */
+            }
+
+            .cta-button {
+                padding: 12px 30px;
+                background: linear-gradient(45deg, #ff2b06, #ff7300);
+                color: #fff;
+                text-transform: uppercase;
+                font-weight: bold;
+                border-radius: 50px;
+                text-decoration: none;
+                transition: background 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+            }
+    
+            .cta-button:hover {
+                background: linear-gradient(45deg, #ff7300, #ff2b06);
+                transform: scale(1.1);
+                box-shadow: 0 10px 30px rgba(255, 43, 6, 0.7);
+            }
+    
+            /* Hero Section */
+            .hero {
+                position: relative;
+    
+                color: #0e0808;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                overflow: hidden;
+            }
+    
+            .hero video {
+                position: absolute;
+                top: 0;
+                left: 10;
+                width: 95%;
+                height: 100%;
+                object-fit: cover;
+                z-index: -1;
+                opacity: 0.6;
+            }
+    
+            .hero-content {
+                z-index: 1;
+                max-width: 800px;   
+                padding: 20px;
+                animation: fadeIn 2s ease-out;
+            }
+    
+            .hero h1 {
+                font-size: 5rem;
+                letter-spacing: 2px;
+                margin-bottom: 20px;
+                background: linear-gradient(45deg, #ff2b06, #ff7300);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+    
+            .hero p {
+                font-size: 1.6rem;
+                margin-bottom: 30px;
+                line-height: 1.8;
+            }
+    
+                    /* Sections Background */
+            .section {
+                background-image: url('Niit.jpg'); /* Your image file */
+                background-size: cover; /* Cover the entire section */
+                background-position: center; /* Center the image */
+                background-attachment: fixed; /* Fixed background */
+                background-repeat: no-repeat; /* Prevent repetition */
+                padding: 50px 20px;
+                text-align: left;
+            }
+            /* Sections */
+            .section {
+                padding: 80px 20px;
+                text-align: left;
+            }
+    
+
+    
+            .section h2 {
+                text-align: center; /* Centers the text */
+                font-size: 3rem;
+                font-weight: bold; /* Makes it bold */
+                background: linear-gradient(45deg, #942424, #ff7300);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                margin-bottom: 20px;
+                position: relative;
+            }
+    
+            .section p {
+                font-size: 1.2rem;
+                line-height: 1.8;
+                max-width: 800px;
+                margin: 0 auto 40px;
+                color: rgba(255, 255, 255, 0.8);
+                position: relative;
+               ;
+            }
+            @keyframes float {
+                0%, 100% {
+                    transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(-20px);
+                }
+            }
+            /*float cards*/
+            .cards {
+                display: flex;
+                justify-content: space-between; /* Ensure there's space between the cards */
+                flex-wrap: wrap; /* Allow wrapping of cards */
+                gap: 30px;
+            }
+
+            .card-container {
+                perspective: 900px;
+                width: calc(30% - 20px); /* Slightly wider cards to fit three per row */
+                height: 500px; /* Taller cards for better content display */
+            }
+
+            .card {
+                width: 100%; /* Full width of the container */
+                height: 100%; /* Full height of the container */
+                position: relative;
+                transform-style: preserve-3d;
+                transition: transform 0.6s ease;
+            }
+
+            .card-container:hover .card {
+                transform: rotateY(180deg);
+            }
+
+            .card-front,
+            .card-back {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                backface-visibility: hidden;
+                border-radius: 10px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 20px;
+                text-align: center;
+                color: #fff;
+            }
+
+            .card-front {
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+
+            .card-back {
+                background: linear-gradient(135deg, #ff2b06, #ff7300);
+                transform: rotateY(180deg);
+                color: #fff;
+            }
+
+            .card img {
+                width: 250px; /* Larger image size */
+                height: 250px;
+                border-radius: 50%;
+                margin-bottom: 15px;
+                border: 3px solid rgba(255, 255, 255, 0.3);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            }
+
+            .card h3 {
+                font-size: 1.8rem; /* Slightly larger text */
+                margin-bottom: 10px;
+            }
+
+            .card p {
+                font-size: 1.2rem; /* Slightly larger text for better readability */
+                color: rgba(255, 255, 255, 0.9);
+            }
+
+            .card:hover {
+                transform: translateY(-20px) scale(1.05); /* Subtle lift and scale for better interaction */
+                box-shadow: 0 40px 80px rgba(11, 6, 4, 0.6);
+            }
+
+            /* Responsive Adjustments */
+            @media (max-width: 768px) {
+                .card-container {
+                    width: 100%; /* Full width for small screens */
+                    height: 400px; /* Adjusted height for smaller screens */
+                }
+
+                .card img {
+                    width: 200px;
+                    height: 200px;
+                }
+            }
+
+
+            .footer-distributed {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                padding: 20px;
+                background: linear-gradient(135deg, #222, #444);
+                color: #f1f1f1;
+                font-family: "Segoe UI", Arial, sans-serif;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+                border-top: 3px solid #ff9800;
+        }
+    
+            .footer-left, .footer-center, .footer-right {
+                flex: 1;
+                margin: 0 15px;
+            }
+    
+            .logo-footer {
+                width: 50px;
+                transition: transform 0.3s;
+            }
+            .logo-nav{
+                width: 75px;
+            }
+            .logo-footer:hover {
+                transform: scale(1.1);
+            }
+    
+            .footer-links {
+                margin: 20px 0;
+                text-transform: uppercase;
+                font-size: 0.9rem;
+                letter-spacing: 0.05em;
+            }
+    
+            .footer-links a {
+                color: #f1f1f1;
+                margin-right: 15px;
+                text-decoration: none;
+                transition: color 0.3s, border-bottom 0.3s;
+            }
+    
+            .footer-links a:hover {
+                color: #ff9800;
+                border-bottom: 1px solid #ff9800;
+            }
+    
+            .footer-center div {
+                margin: 15px 0;
+                display: flex;
+                align-items: center;
+            }
+    
+    
+            .footer-center i:hover {
+                transform: scale(1.2);
+            }
+    
+            .footer-right .footer-company-about {
+                margin-bottom: 15px;
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+    
+            .footer-icons a {
+                color: #f1f1f1;
+                margin-right: 12px;
+                font-size: 28px;
+                display: inline-block;
+                transition: color 0.3s, transform 0.3s;
+
+                
+            }
+    
+            .footer-icons a:hover {
+                color: #ff9800;
+                transform: scale(1.3);
+            }
+    
+            .footer-icons .icon {
+                display: inline-block;
+                transition: transform 0.3s;
+            }
+    
+            .footer-icons .icon:hover {
+                transform: rotate(10deg) scale(1.2);
+            }
+    
+            @media (max-width: 768px) {
+                .footer-distributed {
+                    flex-direction: column;
+                    text-align: center;
+                    padding: 30px;
+                }
+    
+                .footer-left, .footer-center, .footer-right {
+                    margin: 20px 0;
+                }
+    
+                .footer-links {
+                    margin-bottom: 30px;
+                }
+            }
+    
+        </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo-nav">
+            <img src="NUlogo.png" alt="logo" class="logo-nav" />
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Our Team.html">Our Team</a></li>
+            <li><a href="Project.html">Projects</a></li>
+            <li><a href="news.html">News and Event</a></li>
+            <li><a href="publications.html">Publications</a></li>
+        </ul>
+    </nav>
+    
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <video muted autoplay loop>
+            <source src="HERBAL.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-content">
+            <h1>Energy Harvesting System Design (EHSD)</h1>
+            <p>Ignite curiosity, Tinker , and Dive IN.</p>
+            <a class="cta-button" href="#about">Learn More</a>
+            
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="content-container">
+            
+            <div class="image-content-wrapper">
+                <div class="image-container">
+                    <img src="ajsingh.png" alt="Professor Ajay Kumar Singh" />
+                </div>
+            
+            <div class="transparent-box">
+                <h2>Professor Ajay Kumar Singh</h2>
+                <p>Professor Ajay Kumar Singh is an expert in sustainable energy systems with over two decades of experience in the field. He has led various projects focusing on renewable energy integration and energy storage technologies. His dedication to green technology solutions has earned him recognition in academia and the research community. Professor Singh has contributed significantly to the development of energy harvesting systems, especially those that utilize biological processes to generate clean, renewable energy. His work continues to inspire the next generation of researchers in the field.</p>
+                
+                <p>
+                    Professor Ajay Kumar Singh is a highly esteemed academic and researcher in the field of energy systems and sustainability. With a deep passion for advancing sustainable energy solutions, he has contributed extensively to the development of technologies in renewable energy, energy storage, and energy harvesting systems.
+                </p>
+
+                <p><strong>His research interests also extend to environmental chemistry and materials science, where he works towards creating more efficient and eco-friendly energy solutions.</strong></p>
+                
+                <!-- The additional content will be initially hidden -->
+                <div id="moreInfo" class="more-info">
+                    <h3>Research Areas</h3>
+                    <ul>
+                        <li>Microelectronics Circuits, Simulation and Characterisation</li>
+                        <li>Modelling of Nanoscale MOSFET, TFET and CNTFET Devices</li>
+                        <li>Low-Power Digital VLSI and Memory Design</li>
+                        <li>Nanotechnology</li>
+                        <li>Renewable Energy (Energy Harvesting System/Power Management System)</li>
+                        <li>IoT</li>
+                    </ul>
+                    <h3>Consulting Areas</h3>
+                    <ul>
+                        <li>Nanoelectronics</li>
+                        <li>Chip Design</li>
+                        <li>Renewable Energy Source Research</li>
+                    </ul>
+                </div>
+    
+                <!-- More button to toggle the visibility -->
+                <button id="moreBtn" class="more-btn" onclick="toggleMoreInfo()">More</button>
+            </div>
+        </div>
+
+    </section>
+    
+ 
+<section class="section">
+    <div class="content-container">
+        <div class="image-content-wrapper">
+            <div class="image-container">
+                <img src="jj sir.jpg" alt="Dr. Jetendra Joshi" />
+            </div>
+        <!-- Transparent box containing professor's information -->
+        <div class="transparent-box">
+            <h2>Dr. Jetendra Joshi</h2>
+            <p>
+                Dr. Jetendra Joshi is an expert in IOT ,Energy Systems,Context-Aware Computing and Mechatronics
+            </p>
+
+            <!-- Extended information about Professor Joshi -->
+            <h3>About Dr. Jetendra Joshi</h3>
+            <p>
+                With a passion for cutting-edge research and innovation, Professor Joshi’s interests span multiple domains in electronics and communication along with energy systems.
+            </p>
+            <h3>Research Areas</h3>
+            <ul>
+                <li> Renewable Energy (Energy Harvesting System/Power Management System)</li>
+                <li> IoT Product Design and Development</li>
+                <li> Sensor Integration and Circuit Design</li>
+            </ul>
+        </div>
+</section>
+
+
+    <!-- Our Mission Section -->
+    <section class="section">
+        <div class="content-container">
+        <div class="mission-box">
+        <h2>Our Mission</h2>
+        <p> To lead the advancement of sustainable energy solutions through innovative research, development, and application of energy harvesting technologies. We aim to harness renewable energy from diverse sources, including solar, wind, thermal, and bioenergy, to create efficient, eco-friendly systems that power the future. 
+            Our mission is to foster interdisciplinary collaboration, educate the next generation of energy professionals, and contribute to a carbon-neutral world by transforming how energy is generated, stored, and utilized.</p>
+    </section>
+</div>
+</div>
+<!-- Core Members Section -->
+<section class="section">
+    <h2 class="group-heading">TEAM MEMBERS</h2>
+    <div class="cards">
+        <div class="card-container">
+            <div class="card">
+                <div class="card-front">
+                    <img src="image.png" alt="SN Sharan">
+                    <h3>Dr. S.N Sharan</h3>
+                    <p>External Mentor Faculty
+                    S.Sharan@niituniversity.in
+                    </p>
+                </div>
+                <div class="card-back">
+                    <h3>Dr. S.N Sharan</h3>
+                    <p>S.Sharan@niituniversity.in
+                        Signal Processing, Robotics, and Energy Systems
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="card-container">
+            <div class="card">
+                <div class="card-front">
+                    <img src="Sachit.jpg" alt="Sachit Sharma">
+                    <h3>Sachit Sharma</h3>
+                    <p>Student<br>
+                    sachitsharma802@outlook.com
+                    </p>
+                </div>
+                <div class="card-back">
+                    <h3>Sachit Sharma</h3>
+                    <p>Web Development, IOT, Cloud Development, Augmented Reality</p>
+                </div>
+            </div>
+        </div>
+        <!-- P4 and P5 in the same row -->
+        <div class="card-container">
+            <div class="card">
+                <div class="card-front">
+                    <img src="Yash.jpg" alt="Yash Kumar">
+                    <h3>Yash Kumar</h3>
+                    <p>Student
+                        <br>
+                      yaash321@yahoo.com  
+                    </p>
+                </div>
+                <div class="card-back">
+                    <h3>Yash Kumar</h3>
+                    <p>IOT,Cloud Integration</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-container">
+            <div class="card">
+                <div class="card-front">
+                    <img src="Raghav.jpg" alt="Raghav Narayan">
+                    <h3>Raghav Narayan</h3>
+                    <p>Student
+                    <br>
+                    raghav.naryan24@st.niituniversity.in
+                    </p>
+                </div>
+                <div class="card-back">
+                    <h3>P5</h3>
+                    <p>IOT,Sensor Integration and Cloud integration,Product Design and Testing</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-container">
+            <div class="card">
+                <div class="card-front">
+                    <img src="swaroop.png" alt="Swaroop">
+                    <h3>Swaroop Nambia</h3>
+                    <p>Student
+                    swaroop.nambia21@st.niituniversity.in
+                    </p>
+                </div>
+                <div class="card-back">
+                    <h3>Swaroop Nambia</h3>
+                    <p>UI,AI-ML</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-container">
+            <div class="card">
+                <div class="card-front">
+                    <img src="kumar.png" alt="Praveen Kumar">
+                    <h3>Praveen Kumar</h3>
+                    <p>Staff Member<br>
+                        praveen.kumar@niituniversity.in
+                    </p>
+                </div>
+                <div class="card-back">
+                    <h3>Praveen Kumar</h3>
+                    <p>Praveen Kumar abo</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer-distributed">
+    <div class="footer-left">
+      <h3>
+        <img src="NUlogo.png" alt="NU EHSD Logo" class="logo-footer" />
+      </h3>
+      <p class="footer-links">
+        <a href="index.html">Home</a></li>
+        <a href="Our Team.html">Our Team</a></li>
+        <a href="Project.html">Projects</a></li>
+        <a href="news.html">News and Event</a></li>
+        <a href="publications.html">Publications</a></li>
+      </p>
+    </div>
+  
+    <div class="footer-center">
+      <div>
+        <i class="fa fa-map-marker"></i>
+        <p>
+          <span>NIIT University</span>
+          Neemrana, Rajasthan
+        </p>
+      </div>
+        </p>
+      </div>
+
+    </div>
+    <footer class="footer">
+        <p>&copy; 2024 EHSD Research Centre. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleInfo(element) {
+            element.classList.toggle('active');
+        }
+
+        // Function to toggle the visibility of the additional information
+        function toggleMoreInfo() {
+            var moreInfo = document.getElementById("moreInfo");
+            var moreBtn = document.getElementById("moreBtn");
+
+            // Toggle visibility of the extra content
+            if (moreInfo.style.display === "none" || moreInfo.style.display === "") {
+                moreInfo.style.display = "block"; // Show the additional information
+                moreBtn.textContent = "Less"; // Change button text to "Less"
+            } else {
+                moreInfo.style.display = "none"; // Hide the additional information
+                moreBtn.textContent = "More"; // Change button text back to "More"
+            }
+            var more_Btn = document.getElementById("more-Btn");
+
+            // Toggle visibility of the extra content
+            if (more_Info.style.display === "none" || more_Info.style.display === "") {
+                more_Info.style.display = "block"; // Show the additional information
+                more_Btn.textContent = "Less"; // Change button text to "Less"
+            } else {
+                more_Info.style.display = "none"; // Hide the additional information
+                more_Btn.textContent = "More"; // Change button text back to "More"
+            }
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EHSD Research Centre</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('Niit.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: rgba(139, 0, 0, 0.8);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+        }
+
+        .navbar ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .navbar ul li {
+            margin: 0 15px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #f9f3f3;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            color: #ffcccb;
+        }
+
+        .logo img {
+            width: 60px;
+            height: 60px;
+        }
+            /* The hidden additional information */
+            .more-info {
+                display: none;
+                margin-top: 20px;
+                background-color: rgb(0, 0,0, 0.5);
+            }
+
+            /* More button styling */
+            .more-btn {
+                background: #ff2b06; /* Button color */
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                font-size: 1rem;
+                border-radius: 25px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            .more-btn:hover {
+                background: #ff7300; /* Hover color */
+            }
+
+            .cta-button {
+                padding: 12px 30px;
+                background: linear-gradient(45deg, #ff2b06, #ff7300);
+                color: #fff;
+                text-transform: uppercase;
+                font-weight: bold;
+                border-radius: 50px;
+                text-decoration: none;
+                transition: background 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+            }
+    
+            .cta-button:hover {
+                background: linear-gradient(45deg, #ff7300, #ff2b06);
+                transform: scale(1.1);
+                box-shadow: 0 10px 30px rgba(255, 43, 6, 0.7);
+            }
+
+        /* Section: Publications and Patents */
+        .publications-patents {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 100px 20px 40px;
+        }
+
+        .publications-patents div {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .publications-patents div:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 12px 30px rgba(0, 0, 0, 0);
+        }
+
+        .publications-patents h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #ff2b06;
+            border-bottom: 2px solid #ff2b06;
+            padding-bottom: 5px;
+        }
+
+        .publications-patents ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .publications-patents li {
+            font-size: 16px;
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+
+        .publications-patents li b {
+            color: #ff2b06;
+        }
+
+        /* Footer styling */
+        .footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            height: 50px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 10;
+            font-size: 14px;
+            backdrop-filter: blur(5px);
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        /* Smooth scroll behavior */
+        a {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <section class="navbar">
+        <div class="logo">
+            <img src="NUlogo.png" alt="EHSD Logo">
+        </div>
+        <ul>
+            <li><a href="index.html"><span class="icon"><i class="fas fa-home"></i></span> Home</a></li>
+            <li><a href="Our Team.html"><span class="icon"><i class="fas fa-users"></i></span> Our Team</a></li>
+            <li><a href="Project.html"><span class="icon"><i class="fas fa-project-diagram"></i></span> Projects</a></li>
+            <li><a href="news.html"><span class="icon"><i class="fas fa-newspaper"></i></span> News and Events</a></li>
+            <li><a href="#"><span class="icon"><i class="fas fa-book"></i></span> Publications</a></li>
+        </ul>
+    </section>
+
+    <!-- Publications and Patents Section -->
+    <div class="publications-patents">
+        <div>
+            <h3>Research Publications</h3>
+            <ul>
+                <li><b>Nanogenerators and Self-Powered Systems</b>, edited by Dr. Bhaskar Dudem, Dr. Vivekananthan Venkateswaran, and Prof. Arunkumar Chandrasekhar, Chapter name: Plant Base Renewable Energy to Power Nanoscale Sensors, pp. 1-16, Published by InTech publisher, Croatia, (ISBN: 978-953-51-3208-0, 2022).</li>
+                <li><b>Sansevieria Plant: Plant Base Cell (PBC) to power up IoT sensor nodes</b>, Ajay Kumar Singh, ADBU-Journal of Engineering Technology vol. 11, issue 1, May 2022. (ISSN: 2348-7305)</li>
+                <li><b>Renewable Energy from Living Plants to Power IoT Sensor for Remote Sensing</b>, P.L. Chong, A.K. Singh, F.Y. Kong, ADBU-Journal of Engineering Technology, vol. 11, issue 1, May 2022, (ISSN: 2348-7305)</li>
+            <div id="moreInfo" class="more-info">
+                
+                <li><b>Characterization of Aloe Barbadensis Miller leaves as a potential electrical energy source</b>, Peng Lean Chong, Ajay Kumar Singh, Swee Leong Kok , PLoS ONE 14(6): e0218758. https://doi.org/10.1371/journal.pone.0218758 , 2019, (ISSN: 1932-6203), (SCOPUS & WoS)</li>
+                <li><b>Potential application of Aloe Vera-derived plant-based cell in powering wireless device</b>, Peng Lean Chong, Ajay Kumar Singh, Swee Leong Kok , PLoS ONE 14(12): : e0227153, December 2019, (ISSN: 1932-6203), (SCOPUS & WoS)</li>
+                <li><b>Renewable and Sustainable Electrical Energy harvested from Living Plants: An Experimental Study</b>, A. K. Singh and N. Kumar, 2021 International Conference on Electrical, Computer, Communications and Mechatronics Engineering (ICECCME), 2021, pp. 01-04, doi: 10.1109/ICECCME52200.2021.9590928.</li>
+                <li><b>A Compact Mathematical Modelling for Performance Evaluation of PV Module considering Single-Diode Model</b>, accepted in Indian Journal of Science and Technology, 2023.</li>
+                <li><b>Preliminary Experimental Study of Herbal Electrolyte for Future Green Battery</b>, Ganti, K. B., SINGH, A. K., & Joshi, J. (2024). Journal of The Electrochemical Society.</li>
+                <li><b>Design of rechargeable/regenerative future AA liquid green battery for low power applications</b>Singh, A. K., Joshi, J., Kumar, P., & Gangwar, S. (2024).Energy Storage, 6(5), e674. https://doi.org/10.1002/est2.674 </li>
+                <li><b>IoT Based Smart Air Ventilation and Energy Management System</b>Joshi, J., Rao, S., Panda, P., Bannerjee, J., & Mondal, S. (2024, October). Energy Informatics Academy Conference (pp. 89-101). Cham: Springer Nature Switzerland</li>
+            </div>
+            </ul>
+            <button id="moreBtn" class="more-btn" onclick="toggleMoreInfo()">More</button>
+        </div>
+
+        <div>
+            <h3>Patents Applied/Published</h3>
+            <ul>
+                <li><b>Application No.: 202311028354 A, INDIA</b> - Date of filing: 18/04/2023, Publication Date: 19/05/2023, “STABILIZING HARVESTED ELECTRICAL POTENTIAL FROM ALOE VERA GEL USING ARURVEDIC ELECTROLYTE”.</li>
+                <li><b>Application No.: 202311041835 A, INDIA</b> - Date of filing: 23/06/2023, Publication Date: 21/07/2023, “GREEN REGENERATIVE HERBAL BATTERY: NEXT GENERATION ELECTRICAL ENERGY STORAGE”.</li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Proposals Submitted/Granted</h3>
+            <ul>
+                <li><b>Under NUIG (2023-2025)</b>: Integration of Photovoltaic and Photosynthesis Techniques for Harvesting Electrical energy to power up IoT sensor nodes for Monitoring Environment and Agricultural conditions. (Approved)</li>
+                <li><b>Under CPRI, Bangalore (2023-2025)</b>: Green Herbal Battery: Next Generation Electrical Energy storage system for Sustainable Growth.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <section class="footer">
+        <p>&copy; 2024 EHSD Research Centre. All rights reserved.</p>
+    </section>
+    <script>
+        function toggleInfo(element) {
+            element.classList.toggle('active');
+        }
+
+        // Function to toggle the visibility of the additional information
+        function toggleMoreInfo() {
+            var moreInfo = document.getElementById("moreInfo");
+            var moreBtn = document.getElementById("moreBtn");
+
+            // Toggle visibility of the extra content
+            if (moreInfo.style.display === "none" || moreInfo.style.display === "") {
+                moreInfo.style.display = "block"; // Show the additional information
+                moreBtn.textContent = "Less"; // Change button text to "Less"
+            } else {
+                moreInfo.style.display = "none"; // Hide the additional information
+                moreBtn.textContent = "More"; // Change button text back to "More"
+            }
+            var more_Btn = document.getElementById("more-Btn");
+
+            // Toggle visibility of the extra content
+            if (more_Info.style.display === "none" || more_Info.style.display === "") {
+                more_Info.style.display = "block"; // Show the additional information
+                more_Btn.textContent = "Less"; // Change button text to "Less"
+            } else {
+                more_Info.style.display = "none"; // Hide the additional information
+                more_Btn.textContent = "More"; // Change button text back to "More"
+            }
+        }
+
+    </script>
+</body>
+</html>
+    

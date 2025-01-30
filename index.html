@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EHSD Research Centre</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url("Niit.jpg");
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 0px; /* Adjust for mobile footer height */
+        }
+
+        /* Glassmorphism Effects */
+        .glassmorphism {
+            background: rgba(0, 0, 0, 0.5) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+        .glassmorphism a:hover {
+            text-decoration: none;
+        }
+        /* Enhanced Header */
+        .header {
+            position: flex;
+            top: 0;
+            background: rgba(139, 0, 0, 0.9) !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            height: 90px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo img {
+            width: 90px;
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .header ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+        }
+
+        .header ul li a:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .header ul li a .icon {
+            margin-right: 8px;
+            font-size: 1.1em;
+        }
+
+        /* Main Content Enhancements */
+        .main {
+            padding: 30px;
+            flex:1; 
+            flex-grow: 1;
+            display: grid;
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .basic {
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-info {
+            padding: 30px;
+            line-height: 1.7;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                rgba(184, 34, 34, 0.1) 0%,
+                rgba(255,255,255,0.2) 50%,
+                rgba(255,255,255,0.1) 100%);
+            z-index: -1;
+        }
+
+        /* Featured Projects Section */
+        #featuredprojects {
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        #featuredprojects h1 {
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            color: darkred;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        #featuredprojects .card ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        #featuredprojects .card li {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        #featuredprojects .card li:hover {
+            transform: translateY(-10px);
+        }
+
+        #featuredprojects .card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Info Sections */
+        .info-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .info-sections div {
+            padding: 30px;
+            border-radius: 15px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .info-sections div:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .info-sections h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #2c0a0a;
+        }
+
+        .info-sections p {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #eee8e8;
+        }
+
+        .slider {
+            position: relative;
+            width: 90%;
+            max-width: 1000px;
+            margin: 60px auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .slider-images {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            height: 600px;
+        }
+
+        /* Target both images and video elements */
+        .slider-images img, 
+        .slider-images video, 
+        .slider-images iframe {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+            border-radius: 15px;
+        }
+
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            padding: 20px 25px;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 50%;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(3px);
+        }
+
+        .slider-button:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+            transform: translateY(-50%) scale(1.1);
+        }
+        /* Previous button CSS */
+        .prev {
+            left: 30px;
+            content: '❮'; /* Left arrow symbol */
+        }
+
+        /* Next button CSS */
+        .next {
+            right: 30px;
+            content: '❯'; /* Right arrow symbol */
+        }
+
+        /* Video controls styling */
+        video {
+            object-position: center;
+        }
+        .footer-distributed {
+            background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+            color: #ffffff;
+            padding: 40px 0 0;
+            margin-top: auto;
+            font-family: 'Arial', sans-serif;
+            position: relative;
+            border-top: 3px solid #8B0000;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .footer-section {
+            padding: 20px;
+        }
+
+        .footer-section h3 {
+            color: #8B0000;
+            margin-bottom: 25px;
+            font-size: 1.4em;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: #8B0000;
+        }
+
+        .footer-logo {
+            width: 130px;
+            margin-bottom: 20px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-about-text {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #cccccc;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            color: #ffffff;
+            font-size: 1.5em;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: #8B0000;
+            transform: translateY(-3px);
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section ul li a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-section ul li a:hover {
+            color: #8B0000;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #cccccc;
+        }
+
+        .contact-info i {
+            min-width: 25px;
+            text-align: center;
+        }
+
+        .footer-bottom {
+            background: #000000;
+            padding: 20px 0;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            color: #cccccc;
+            font-size: 0.9em;
+        }
+
+        .footer-bottom a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom a:hover {
+            color: #8B0000;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-section h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            .footer-section ul li a {
+                justify-content: center;
+            }
+
+            .contact-info p {
+                justify-content: center;
+            }
+    
+    }
+  </style>
+</head>
+<body>
+    <section class="header glassmorphism">
+        <div class="logo">
+            <img src="NUlogo.png" alt="EHSD Logo">
+        </div>
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home icon"></i>Home</a></li>
+            <li><a href="Our Team.html"><i class="fas fa-users icon"></i>Our Team</a></li>
+            <li><a href="Project.html"><i class="fas fa-project-diagram icon"></i>Projects</a></li>
+            <li><a href="news.html"><i class="fas fa-newspaper icon"></i>News & Events</a></li>
+            <li><a href="publications.html"><i class="fas fa-book icon"></i>Publications</a></li>
+        </ul>
+    </section>
+    <img src="empath.png" alt="Home Image">
+    <section class="main">
+
+        <div class="content-info glassmorphism">
+            <h1 style="font-size: 3em; text-align: center;row-gap:10px;">EHSD</h1>
+
+            <p>
+                The Research Centre for Energy Harvesting System Design (EHSD) aims to develop interdisciplinary strengths in science and technology issues related to the sustainable development of energy solutions.
+                EHSD research centre provides integrated solutions for obstacles in energy efficiency and renewable energy storage systems. The centre's mission is to design Eco-friendly Herbal batteries as next-gen
+                power sources for electronic gadgets, sensors, and other future devices. We focus on harvesting electrical energy from plants/trees to autonomously power consumer devices.
+            </p>
+
+            <div style="display: flex; flex-direction: column; align-items: center; text-align: center; row-gap: 20px; max-width: 1000px; margin: auto;">
+
+            
+                <div style="display: flex; justify-content: center; align-items: center; gap: 50px; width: 100%;">
+                    
+                    <!-- Vision Section -->
+                    <div style="flex: 1; padding: 20px; text-align: left;">
+                        <h2 style="border-bottom: 2px solid #000; padding-bottom: 1px; text-align: center;"><b>Vision</b></h2>
+                        <p><b>To lead towards a 100% carbon-free future energy system.</b></p>
+                    </div>
+            
+                    <!-- Vertical Line Separator -->
+                    <div style="width: 2px; background-color: #000; height: auto; min-height: 150px;"></div>
+            
+                    <!-- Mission Section -->
+                    <div style="flex: 1; padding: 20px; text-align: left;">
+                        <h2 style="border-bottom: 2px solid #000; padding-bottom: 5px; text-align: center;"><b>Mission</b></h2>
+                        <p><b>To lead the advancement of sustainable energy solutions through innovative research, development, and application of energy harvesting technologies. We aim to harness renewable energy from diverse sources, including solar, wind, thermal, and bioenergy, to create efficient, eco-friendly systems that power the future.</b></p>
+                        <p><b>Our mission is to foster interdisciplinary collaboration, educate the next generation of energy professionals, and contribute to a carbon-neutral world by transforming how energy is generated, stored, and utilized.</b></p>
+                    </div>
+            
+                </div>
+            </div>
+            
+            
+        </div>
+        <div class="info-sections">
+            <div class="glassmorphism">
+                <a href="publications.html" style="text-decoration: none;">
+                <h2>Research Areas</h2>
+                <p><b>Renewable Energy and IoT</b><br>Clean and renewable energy, IoT-enabled green energy sources, hybrid renewable energy systems, smart energy generation systems.</p>
+                <p><b>Electrochemical Energy Storage</b><br>Eco-friendly energy storage systems for a safer world, battery prototyping, and performance analysis.</p>
+                <p><b>Energy Harvesting IC</b><br>Hybrid energy IC for IoT devices, design of EHS for plant energy storage, low-power design for integrated systems.</p>
+                <p><b>AI Integration in Renewable Energy System</b><br>Optimization in prediction using AI in Renewable Energy System </p>
+                <p><b>Smart Agricultural System</b><br>Integration of AI and IoT to optimize farming by automating irrigation, monitoring soil conditions, and enhancing crop yield efficiently.</p>
+            </div></a>
+
+ 
+                <div class="glassmorphism">
+                    <a href="news.html" style="text-decoration: none;">
+                    <h2>News & Events</h2>
+                    <p><b>Dr. Solanki's Visit:</b> "Solar Man" from IIT Mumbai visited EHSD lab</p>
+                    <p><b>Dr. Garg's Visit:</b> Anand Digital Group Head visited EHSD lab</p>
+                    <p><b>Visit To Renewable Energy India Expo 2024</b></p>
+                    <p><b>Visit To EV India Expo 2024</b></p>      
+                    <p><b>Mr. UC. Aggarwal Visit:</b> External Industry "IPR" expert visited EHSD lab</p>                 
+                </div></a>
+        </div>
+    </section>
+        <section id="featuredprojects" class="glassmorphism">
+            <h1>Featured Projects</h1>
+            <div class="card">
+                <ul>
+                    <li class="glassmorphism">
+                        <a href="Energy Harvesting.html">
+                            <img src="energy.png" alt="Energy Project">
+                        </a>
+                    </li>
+                    <li class="glassmorphism">
+                        <a href="iot.html">
+                            <img src="iot.png" alt="IoT Project">
+                        </a>
+                    </li>
+                    <li class="glassmorphism">
+                        <a href="Renewable energy.html">
+                            <img src="herbal.png" alt="Herbal Project">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        
+        <section class="slider">
+            <div class="slider-images">
+                <img src="1.png" alt="Slide 1">
+                <img src="2.png" alt="Slide 2">
+                <img src="3.png" alt="Slide 3">
+                <iframe src="https://www.youtube.com/embed/2WzLugX1uNU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                </iframe>
+            </div>
+            <button class="slider-button prev">&#10094;</button>
+            <button class="slider-button next">&#10095;</button>
+            <div class="slider-indicators"></div>
+        </section>
+        
+        <footer class="footer-distributed">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <img src="NU logo.png" alt="EHSD Logo" class="footer-logo">
+                    <p class="footer-about-text">
+                        Pioneering sustainable energy solutions through innovative research and development.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-researchgate"></i></a>
+                    </div>
+                </div>
+        
+                <div class="footer-section links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="Our Team.html"><i class="fas fa-chevron-right"></i> Our Team</a></li>
+                        <li><a href="Project.html"><i class="fas fa-chevron-right"></i> Projects</a></li>
+                        <li><a href="news.html"><i class="fas fa-chevron-right"></i> News & Events</a></li>
+                        <li><a href="publications.html"><i class="fas fa-chevron-right"></i> Publications</a></li>
+                    </ul>
+                </div>
+        
+                <div class="footer-section contact">
+                    <h3>Contact Us</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> NIIT University, Neemrana, Rajasthan 301705</p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:info@ehsd-research.org">info@ehsd-research.org</a></p>
+                        <p><i class="fas fa-phone"></i> +91-123-456-7890</p>
+                        <p><i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 5:00 PM</p>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="footer-bottom">
+                <p>&copy; 2024 EHSD Research Centre. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+            </div>
+        </footer>
+
+
+    <script>
+
+        let currentSlide = 0;
+        let autoSlideInterval;
+        const slider = document.querySelector('.slider');
+        const track = document.querySelector('.slider-images');
+        const slides = document.querySelectorAll('.slider-images > *');
+        const indicatorsContainer = document.querySelector('.slider-indicators');
+        const totalSlides = slides.length;
+
+        // Create indicators
+        slides.forEach((_, index) => {
+            const indicator = document.createElement('div');
+            indicator.classList.add('indicator');
+            if(index === 0) indicator.classList.add('active');
+            indicator.addEventListener('click', () => {
+                goToSlide(index);
+                resetAutoSlide();
+            });
+            indicatorsContainer.appendChild(indicator);
+        });
+
+        function updateSlider() {
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            document.querySelectorAll('.indicator').forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlide);
+            });
+            
+            // Handle video playback
+            slides.forEach((slide, index) => {
+                if(slide.tagName === 'VIDEO') {
+                    if(index === currentSlide) {
+                        slide.play();
+                    } else {
+                        slide.pause();
+                    }
+                }
+            });
+        }
+
+        function goToSlide(index) {
+            currentSlide = (index + totalSlides) % totalSlides;
+            updateSlider();
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        }
+
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(nextSlide, 10000);
+        }
+
+        document.querySelector('.next').addEventListener('click', () => {
+            nextSlide();
+            resetAutoSlide();
+        });
+
+        document.querySelector('.prev').addEventListener('click', () => {
+            prevSlide();
+            resetAutoSlide();
+        });
+
+        // Start auto-slide
+        autoSlideInterval = setInterval(nextSlide, 10000);
+
+        // Pause video when not visible
+        track.addEventListener('transitionstart', () => {
+            slides.forEach(slide => {
+                if(slide.tagName === 'VIDEO') slide.pause();
+            });
+        });
+</script>
+</body>
+</html>

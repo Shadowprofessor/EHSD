@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herbal Battery Project</title>
+    <style>
+        /* General Section Styling */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100%;
+            color: #fff;
+            background-color: #f7f7f7;
+        }
+
+        /* Background Image with Fade Effect */
+        #hero {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('herbal.png') no-repeat center center/cover;
+            height: 100%;
+            filter: brightness(50%);
+            z-index: -1;
+        }
+
+        /* Section Styling */
+        h2 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #introduction, #features, #gallery {
+            padding: 40px 20px;
+            margin: 20px 0;
+        }
+
+        #introduction p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #555;
+            text-align: justify;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #features ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #features li {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+        }
+
+        #features h3 {
+            font-size: 1.3em;
+            color: #444;
+        }
+
+        #features p {
+            font-size: 1em;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Gallery Section Styling */
+        #gallery .gallery-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            width: 300px;
+            height: 200px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Embed YouTube Video inside Gallery */
+        .gallery-item iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item iframe:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hover and Transition Effects */
+        .slider-video iframe {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Mobile Styling */
+        @media (max-width: 768px) {
+            #gallery .gallery-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .gallery-item {
+                width: 250px;
+                height: 150px;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Image Section -->
+    <div id="hero"></div>
+
+    <!-- Introduction Section -->
+    <div id="introduction">
+        <h2>Introduction</h2>
+        <p>
+            <strong>Herbal Battery</strong><br>
+            Herbal/Green batteries are the need of the hour, yet this topic hasn’t really been addressed seriously, which needs immediate attention for sustainable growth and reducing carbon emissions. The current focus of our research is to develop an Herbal battery that is Eco-friendly and rechargeable. We are working to improve the capacity of the designed Herbal battery. The designed battery meets important issues like sustainability and recyclability.
+        </p>
+    </div>
+
+    <!-- Features Section -->
+    <div id="features">
+        <h2>Features</h2>
+        <ul>
+            <li>
+                <h3>Rotation/Vibration effect:</h3>
+                <p>Current changes with rotation or shaking of the battery. This can be useful in the case of e-rickshaws and other applications involving vibration.</p>
+            </li>
+            <li>
+                <h3>Temperature Insensitive:</h3>
+                <p>Our AA liquid battery remains stable at 700°C for hours and quickly recovers from -65°C, ensuring unwavering power in harsh environments. In just 4 minutes of returning to room temperature, it's ready to power your electronic devices.</p>
+            </li>
+            <li>
+                <h3>Non-flammable:</h3>
+                <p>No burning effect because it does not contain any toxic gases or chemicals, making it eco-friendly.</p>
+            </li>
+            <li>
+                <h3>Rechargeable:</h3>
+                <p>The proposed battery can charge 80-90% within 15-20 minutes, making it a strong contender to replace Li-ion batteries where faster recharging is needed.</p>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Gallery Section with YouTube Videos -->
+    <div id="gallery">
+        <h2>Gallery</h2>
+        <div class="gallery-container">
+            <!-- First YouTube Video -->
+            <div class="gallery-item">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <!-- Second YouTube Video -->
+            <div class="gallery-item">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <!-- Third YouTube Video -->
+            <div class="gallery-item">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
