@@ -50,6 +50,12 @@
             color: #00ff88;
         }
 
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
@@ -148,12 +154,13 @@
             right: -300px;
             width: 300px;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.9), rgba(0, 200, 255, 0.9));
             padding: 20px;
-            transition: right 0.3s ease;
+            transition: right 0.5s ease;
             display: flex;
             flex-direction: column;
             gap: 10px;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
         }
 
         .project-card:hover .sub-parts {
@@ -162,15 +169,24 @@
 
         .sub-part {
             color: #fff;
-            font-size: 0.9em;
-            padding: 10px;
+            font-size: 1em;
+            padding: 15px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            transition: background 0.3s;
+            border-radius: 10px;
+            transition: background 0.3s, transform 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .sub-part:hover {
             background: rgba(255, 255, 255, 0.2);
+            transform: translateX(10px);
+        }
+
+        .sub-part i {
+            font-size: 1.2em;
+            color: #00ff88;
         }
 
         @keyframes fadeUp {
@@ -184,6 +200,7 @@
             }
         }
 
+        /* Responsive Styles */
         @media (max-width: 768px) {
             .navbar {
                 padding: 20px;
@@ -191,14 +208,79 @@
 
             .nav-links {
                 display: none;
+                flex-direction: column;
+                gap: 10px;
+                position: absolute;
+                top: 70px;
+                right: 20px;
+                background: rgba(0, 0, 0, 0.9);
+                padding: 20px;
+                border-radius: 10px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-icon {
+                display: block;
             }
 
             .hero h1 {
                 font-size: 2.5em;
             }
 
+            .hero p {
+                font-size: 1em;
+            }
+
             .projects-section {
                 padding: 50px 20px;
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .project-image {
+                height: 150px;
+            }
+
+            .project-info h3 {
+                font-size: 1.2em;
+            }
+
+            .project-info p {
+                font-size: 0.9em;
+            }
+
+            .sub-parts {
+                width: 250px;
+                right: -250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero p {
+                font-size: 0.9em;
+            }
+
+            .cta-button {
+                padding: 10px 30px;
+                font-size: 1em;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sub-parts {
+                width: 100%;
+                right: -100%;
             }
         }
     </style>
@@ -206,7 +288,10 @@
 <body>
     <nav class="navbar">
         <div class="logo">SmartIoT</div>
-        <div class="nav-links">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-links" id="navLinks">
             <a href="index.html">Home</a>
             <a href="#contact">Contact</a>
         </div>
@@ -230,10 +315,14 @@
                     <p>Complete home automation system with AI-powered energy management</p>
                 </div>
                 <div class="sub-parts">
-                    <div class="sub-part">Solar PV Energy System</div>
-                    <div class="sub-part">Plant Based Energy\System</div>
-                    <div class="sub-part">Herbal Battery</div>
-                    <div class="sub-part">Algae Based Energy Source</div>
+                    <div class="sub-part">
+                        <i class="fas fa-bolt"></i>
+                        DC Power Monitoring
+                    </div>
+                    <div class="sub-part">
+                        <i class="fas fa-plug"></i>
+                        AC Power Monitoring
+                    </div>
                 </div>
             </div>
 
@@ -245,6 +334,16 @@
                     <h3>Water Management System</h3>
                     <p>Real-time patient monitoring system with emergency alerts</p>
                 </div>
+                <div class="sub-parts">
+                    <div class="sub-part">
+                        <i class="fas fa-tint"></i>
+                        pH Level Monitoring
+                    </div>
+                    <div class="sub-part">
+                        <i class="fas fa-water"></i>
+                        TDS Level Monitoring
+                    </div>
+                </div>
             </div>
 
             <div class="project-card">
@@ -252,7 +351,7 @@
                     <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6" alt="Agriculture">
                 </div>
                 <div class="project-info">
-                    <h3>Smart Agriculture</h3>
+                    <h3>Environment Monitoring System</h3>
                     <p>Automated irrigation and crop monitoring system</p>
                 </div>
             </div>
@@ -275,11 +374,31 @@
                     <h3>Battery Management System</h3>
                     <p>Automated irrigation and crop monitoring system</p>
                 </div>
+                <div class="sub-parts">
+                    <div class="sub-part">
+                        <i class="fas fa-battery-full"></i>
+                        Battery Health Monitoring
+                    </div>
+                    <div class="sub-part">
+                        <i class="fas fa-charging-station"></i>
+                        Charging Status
+                    </div>
+                    <div class="sub-part">
+                        <i class="fas fa-car-side "></i>
+                        EV vehicles
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <script>
+        // Toggle mobile menu
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
         // Add smooth scroll behavior
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
