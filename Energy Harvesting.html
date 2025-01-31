@@ -21,7 +21,37 @@
             --text-light: #ccd6f6;
             --neon-glow: 0 0 15px var(--primary-color);
         }
+        .navbar {
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0,0,0,0.9);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
 
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00ff88;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00ff88;
+        }
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
             background: var(--dark-bg);
@@ -398,6 +428,13 @@
     </div>
 
     <div id="particles-js"></div>
+    <nav class="navbar">
+        <div class="logo"><b>EHSD</b></div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="">Contact</a>
+        </div>
+    </nav>
 
     <section class="hero">
         <div class="hero-content">
@@ -433,20 +470,6 @@
         </div>
     </section>
 
-    <section class="section" id="gallery">
-        <h2>Innovation in Action</h2>
-        <div class="video-grid">
-            <div class="video-card">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="video-card">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="video-card">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
-    </section>
 
     <footer class="footer-distributed">
         <div class="footer-left">
@@ -466,20 +489,13 @@
                 <a href="https://maps.app.goo.gl/XDHGesiEC6ZJJCjD9"><i class="fa fa-map-marker"></i></a>
                 <p><span>NIIT University</span> Neemrana, Rajasthan</p>
             </div>
-            <div>
-                <i class="fa fa-envelope"></i>
-                <p><a href="mailto:info@ehsd-research.org">info@ehsd-research.org</a></p>
-            </div>
-            <div>
-                <i class="fa fa-phone"></i>
-                <p>+91-123-456-7890</p>
-            </div>
+            <p><i class="fas fa-envelope"></i> <a href="jetendra.joshi@niit university.in">jetendra.joshi@niit university.in</a></p>
+            <p><i class="fas fa-envelope"></i> <a href="ajay.singh@niit university.in">ajay.singh@niit university.in</a></p>
+            <p><i class="fas fa-phone"></i> +91 74080 07111</p>
         </div>
 
         <div class="footer-right">
-            <p class="footer-company-about">
-                EHSD Research Centre is dedicated to innovation in energy harvesting and sustainable development, addressing global challenges through cutting-edge research and development.
-            </p>
+
             <div class="footer-icons">
                 <a href="#"><i class="fab fa-facebook"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
